@@ -1,0 +1,40 @@
+sudo docker run -d -p 8080:3000 -v "/home/develop/Área de Trabalho/docker/volume-exemplo:/var/www" -w "/var/www" node npm start
+
+docker run -d -P [nomeContainers] (-d roda o container no background  -P atribui portas aleatorias)
+docker run -d -P --name [nomeDadoPormin] [nomeContainers] (--name da nome ao container)
+docker run -d -p 12345:80 [nomeContainers]
+
+docker-start -a -i idContainer (acessar containers)
+docker stop [3primeiroscaracteresdoID] (para contaners)
+docker stop -t 0 [3primeiroscaracteresdoID] (para contaners sem tempo de espera)
+
+docker ps -a (ver containers desativados e ativos)
+
+docker rm idContainer (remover container)
+docker container prune (remover todos os container inativos)
+
+docker images (ver imagens)
+docker rmi nomeImagem (remover iamgens)
+
+docker port idContainer (visualizar portas do Containers)
+
+docker stop -t 0 $(sudo docker os -q) (para todos os containers)
+
+
+docker build -f Dockerfile -t douglasq/node . (comando para rodar dockerfile -t dar nome a imagem . é o contexto, a pasta de procura)
+
+
+
+    docker build -f Dockerfile - cria uma imagem a partir de um Dockerfile.
+    docker build -f CAMINHO_DOCKERFILE/Dockerfile -t NOME_USUARIO/NOME_IMAGEM - constrói e nomeia uma imagem não-oficial informando o caminho para o Dockerfile.
+    docker login - inicia o processo de login no Docker Hub.
+    docker push NOME_USUARIO/NOME_IMAGEM - envia a imagem criada para o Docker Hub.
+    docker pull NOME_USUARIO/NOME_IMAGEM - baixa a imagem desejada do Docker Hub.
+
+
+
+    hostname -i - mostra o ip atribuído ao container pelo docker (funciona apenas dentro do container).
+    docker network create --driver bridge NOME_DA_REDE - cria uma rede especificando o driver desejado.
+    docker run -it --name NOME_CONTAINER --network NOME_DA_REDE NOME_IMAGEM - cria um container especificando seu nome e qual rede deverá ser usada.
+
+
